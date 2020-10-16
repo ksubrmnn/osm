@@ -27,16 +27,10 @@ type TrafficRoutes struct {
 	RouteWeightedServices []RouteWeightedServices `json:"route_weighted_services:omitempty"`
 }
 
-// RouteWeightedClusters is a struct of an HTTPRoute and associated weighted clusters
-type RouteWeightedClusters struct {
-	HTTPRoute        HTTPRoute `json:"http_route:omitempty"`
-	WeightedClusters set.Set   `json:"weighted_clusters:omitempty"`
-}
-
 // RouteWeightedServices is a struct of an HTTPRoute and associated weighted services
 type RouteWeightedServices struct {
-	HTTPRoute        HTTPRoute                 `json:"http_route:omitempty"`
-	WeightedServices []service.WeightedService `json:"weighted_clusters:omitempty"`
+	HTTPRoute        HTTPRoute `json:"http_route:omitempty"`
+	WeightedServices set.Set   `json:"weighted_services:omitempty"`
 }
 
 // TrafficTarget contains all of the routes that go from the Source to the Destination

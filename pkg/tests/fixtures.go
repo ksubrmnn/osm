@@ -67,7 +67,7 @@ const (
 	// Weight1 is the weight of the traffic to be sent this way in a traffic split scenario.
 	Weight1 = 100
 
-	// Weight2is the weight of the traffic to be sent this way in a traffic split scenario.
+	// Weight2 is the weight of the traffic to be sent this way in a traffic split scenario.
 	Weight2 = 200
 
 	// RouteGroupName is the name of the route group SMI object.
