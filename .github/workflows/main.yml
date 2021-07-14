@@ -97,9 +97,19 @@ jobs:
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
           insecure_skip_tls_verify: true
 
-      - name: Test
+      - name: Run Simulation w/ Tresor, SMI policies, and egress disabled
+        env:
+          CERT_MANAGER: "tresor"
+          BOOKSTORE_SVC: "bookstore"
+          BOOKTHIEF_EXPECTED_RESPONSE_CODE: "0"
+          ENABLE_EGRESS: "false"
+          DEPLOY_TRAFFIC_SPLIT: "true"
+          CTR_TAG: ${{ github.sha }}
+          DEPLOY_ON_OPENSHIFT: "true"
         run: |
-          oc api-resources
+          touch .env
+          ./demo/run-osm-demo.sh
+          go run ./ci/cmd/maestro.go
 
 
   images:
